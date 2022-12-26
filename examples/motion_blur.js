@@ -13,11 +13,17 @@ const CHROM_ANGLE = 2; // 1 will shift the different color channels (rgb)
 const CHROM_DT = (CHROM_ANGLE * T) / NUM_FRAMES / 2;
 // --------------------------------------------------------------------------
 
+// Recording stuff
+const capturer = new CCapture({ format: "png" });
+const resetFrame = 120;
+const record = false;
+
 function setup() {
   createCanvas(WIDTH, HEIGHT);
 }
 
 function draw() {
+  if (record && frameCount == 1) capturer.start();
   blendMode(BLEND);
   background(0);
 
@@ -52,5 +58,13 @@ function draw() {
       pop();
     }
     pop();
+  }
+  if (record && frameCount == resetFrame) {
+    capturer.stop();
+    capturer.save();
+    noLoop();
+  }
+  if (record) {
+    capturer.capture(document.getElementById("defaultCanvas0"));
   }
 }
