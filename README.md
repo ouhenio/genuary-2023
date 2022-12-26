@@ -8,7 +8,7 @@ I'm not sure how I'm gonna order the code here, so for now I'm keeping stuff sim
 - `challenge`: stores the scripts of each day.
 - `libraries`: stores utility libraries.
 
-Useful commands:
+### Useful commands:
 
 To setup a server (and thus work with local files):
 ```bash
